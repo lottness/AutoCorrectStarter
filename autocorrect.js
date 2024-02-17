@@ -6,14 +6,33 @@ const TODO = "REPLACE ME!!!";
  * @param {string} sentence - a space-separated string of words
  * @returns {boolean} whether `sentence` contains any of the words in `topics`
  */
-const isRelevant = TODO;
+const isRelevant = (topics, sentence) => {
+  for (let i = 0; i < topics.length; i++) {
+    if (sentence.includes(topics[i])) {
+      return true;
+    }
+  }
+  return false;
+};
 
 /**
  * @param {string[]} topics - an array of topic words
  * @returns {(sentence: string) => boolean} a function that takes a sentence
  *  and returns whether it is relevant to `topics`
  */
-const about = TODO;
+const about = (topics) => {
+  return (sentence) => {
+    for (let i = 0; i < topics.length; i++) {
+      if (sentence.includes(topics[i])) {
+        return true;
+      }
+    }
+    return false;
+  };
+};
+
+const useAbout = about(["hello", "world"]);
+useAbout("is this in the world");
 
 /**
  * @param {(sentence: string) => boolean} criterion - a function that
